@@ -24,12 +24,8 @@ const DetailsModal = ({ data, isOpen, setIsOpen }) => {
             {data?.age || "-"}
           </Grid>
           <Grid item>
-            <Typography fontSize={18}>City:</Typography>
-            {data?.city || "-"}
-          </Grid>
-          <Grid item>
-            <Typography fontSize={18}>English level:</Typography>
-            {data?.english_level || "-"}
+            <Typography fontSize={18}>Languages:</Typography>
+            {data?.languages || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>Grade:</Typography>
