@@ -8,7 +8,6 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 const DetailsModal = ({ data, isOpen, setIsOpen }) => {
-  const { age, city, english_level, grade, notes, skills, studies } = data;
   return (
     <Dialog onClose={() => setIsOpen(false)} open={isOpen}>
       <DialogTitle>Candidate details</DialogTitle>
@@ -22,29 +21,29 @@ const DetailsModal = ({ data, isOpen, setIsOpen }) => {
         >
           <Grid item>
             <Typography fontSize={18}>Age:</Typography>
-            {age || "-"}
+            {data?.age || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>City:</Typography>
-            {city || "-"}
+            {data?.city || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>English level:</Typography>
-            {english_level || "-"}
+            {data?.english_level || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>Grade:</Typography>
-            {grade || "-"}
+            {data?.grade || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>Skills:</Typography>
-            {skills || "-"}
+            {data?.skills || "-"}
           </Grid>
           <Grid item>
             <Typography fontSize={18}>Studies:</Typography>
-            {studies || "-"}
+            {data?.studies || "-"}
           </Grid>
-          {notes?.length && (
+          {data?.notes?.length && (
             <Grid item>
               <Typography fontSize={18}>Notes:</Typography>
               {notes.map((note) => (

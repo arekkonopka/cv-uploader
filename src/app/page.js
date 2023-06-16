@@ -3,63 +3,58 @@ import { DataGrid } from "@mui/x-data-grid";
 import DetailsModal from "@/components/DetailsModal";
 import React, { useState } from "react";
 
-//DUMY-DATA
-const rows = [
+const response = [
   {
     id: 1,
-    english_level: "B2",
-    city: "Bielsko",
-    age: 22,
-    studies: "AGH",
-    github: "https://www.meczyki.pl/",
-    skills: "Ruby, JavaScript, React",
-    portfolio: "https://www.meczyki.pl/",
-    file_path:
-      "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
-    grade: 10,
-    notes: ["first note", "second note"],
+    name: "Aurora Moonstone",
+    english_level: "C1",
+    city: null,
+    age: null,
+    studies:
+      "Enchanted Realm University June 2019 - Present, Poland, Enchanted Meadows High School 2016 - 2019 — 3 years, Poland",
+    github: "https://github.com/TheMultii",
+    skills: "HTML, CSS, JavaScript, Ruby, Python",
+    portfolio: null,
+    file_path: "example.pdf",
+    grade: 4,
+    notes: null,
+    created_at: "2023-06-16T09:48:42.575Z",
+    updated_at: "2023-06-16T09:48:42.575Z",
   },
   {
     id: 2,
+    name: "Nexus Byteblast",
     english_level: "C1",
-    city: "warszawa",
-    age: 42,
-    studies: "Uniwerstyet Jagielonski",
-    github: "https://www.meczyki.pl/",
-    skills: "Ruby, JavaScript, React, PHP",
-    portfolio: "https://www.meczyki.pl/",
-    file_path:
-      "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
-    grade: 8,
-    notes: ["first note", "second note"],
+    city: null,
+    age: null,
+    studies:
+      "Bachelor of Science in Informatics | CyberTech University | 2017-2021, High School Diploma | TechGenius Academy | 2013-2017",
+    github: "https://github.com/humanoid01",
+    skills:
+      "JavaScript, CSS, React.js, Redux, HTML, GIT, REST, API, TypeScript, SCSS, Material UI, Redux, Toolkit OOP, Unit tests",
+    portfolio: "https://portfolio-humanoid01.vercel.app/",
+    file_path: "example2.pdf",
+    grade: 7,
+    notes: null,
+    created_at: "2023-06-16T09:48:42.577Z",
+    updated_at: "2023-06-16T09:48:42.577Z",
   },
   {
     id: 3,
-    english_level: "C1",
-    city: "warszawa",
-    age: 42,
-    studies: "Uniwerstyet Jagielonski",
-    github: "https://www.meczyki.pl/",
-    skills: "Ruby, JavaScript, React, PHP",
-    portfolio: "https://www.meczyki.pl/",
-    file_path:
-      "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
-    grade: 8,
-    notes: [],
-  },
-  {
-    id: 4,
-    english_level: "C1",
-    city: "warszawa",
-    age: 42,
-    studies: "Uniwerstyet Jagielonski",
-    github: "https://www.meczyki.pl/",
-    skills: "Ruby, JavaScript, React, PHP",
-    portfolio: "https://www.meczyki.pl/",
-    file_path:
-      "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
-    grade: 8,
-    notes: ["first note", "second note"],
+    name: "Yarrrek Bloodfang",
+    english_level: "B2",
+    city: "Bielsko-Biała",
+    age: null,
+    studies: "2014r. – 2019r. Uniwersytet Jolly Roger",
+    github: "https://github.com/iMdPd",
+    skills:
+      "HTML, CSS, SASS, Bootstrap, ANTD, JavaScript, Handlebars, React, Redux, Chrome DevTools, GIT, RWD, Jira, Node.js Express",
+    portfolio: null,
+    file_path: "example3.pdf",
+    grade: 5,
+    notes: null,
+    created_at: "2023-06-16T09:48:42.579Z",
+    updated_at: "2023-06-16T09:48:42.579Z",
   },
 ];
 
@@ -73,9 +68,9 @@ const CvList = () => {
 
   const columns = [
     { field: "english_level", headerName: "Eng lvl", width: 40 },
-    { field: "city", headerName: "City", width: 100 },
+    { field: "city", headerName: "City", width: 150 },
     { field: "age", headerName: "Age", width: 40 },
-    { field: "studies", headerName: "Studies", width: 150 },
+    { field: "studies", headerName: "Studies", width: 100 },
     {
       field: "github",
       headerName: "Github",
@@ -139,7 +134,7 @@ const CvList = () => {
           onPaginationModelChange={setPaginationModel}
           pageSizeOptions={[10, 20, 50]}
           paginationModel={paginationModel}
-          rows={rows}
+          rows={response}
           onCellDoubleClick={(params) => {
             setModalData(params.row);
             setIsModalOpen(true);
