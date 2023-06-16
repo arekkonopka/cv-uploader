@@ -127,7 +127,6 @@ const CvList = () => {
   ]
 
   useEffect(() => {
-    console.log('isAuth()', isAuth())
     if (!isAuth()) {
       return redirect('/login')
     }
