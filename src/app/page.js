@@ -162,13 +162,13 @@ const CvList = () => {
   }, []);
 
   return (
-    <section className="flex flex-col  items-center h-screen px-[400px]">
-      <div className="flex mb-4 mt-8 justify-between w-full">
+    <section className="flex flex-col  items-center h-screen ">
+      <div className="flex mb-8 mt-8 justify-between w-3/4">
         <div>
           <h1 className="text-xl">Welcome to Selleo Dashboard</h1>
-          <p className="text-sm">Lorem ipsum dolor sit ament</p>
+          <p className="text-sm mt-2">Lorem ipsum dolor sit ament</p>
         </div>
-        <div className="flex justify-between ">
+        <div className="flex">
           {isHr() && (
             <Link href="/upload" className="p-2 rounded-lg bg-violet-600">
               Upload CV
@@ -177,7 +177,7 @@ const CvList = () => {
         </div>
       </div>
       <div>
-        <div className="flex w-full">
+        <div styles={{ minWidth: "75%" }}>
           <DataGrid
             columns={columns}
             disableRowSelectionOnClick
