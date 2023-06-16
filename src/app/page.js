@@ -17,6 +17,7 @@ const rows = [
     file_path:
       "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
     grade: 10,
+    notes: ["first note", "second note"],
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const rows = [
     file_path:
       "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
     grade: 8,
+    notes: ["first note", "second note"],
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const rows = [
     file_path:
       "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
     grade: 8,
+    notes: [],
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const rows = [
     file_path:
       "https://docs.google.com/document/d/129HgQg1VkBIx8UeUv3JydGXlMKNqbUNOo1QmjOeUUgw/edit",
     grade: 8,
+    notes: ["first note", "second note"],
   },
 ];
 
@@ -116,6 +120,12 @@ const CvList = () => {
       ),
     },
     { field: "grade", headerName: "Grade", width: 40 },
+    {
+      field: "notes",
+      headerName: "Notes",
+      width: 50,
+      renderCell: (cellValue) => cellValue?.row?.notes?.length || "-",
+    },
   ];
 
   return (
