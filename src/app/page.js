@@ -1,5 +1,6 @@
 "use client";
 import { DataGrid } from "@mui/x-data-grid";
+import DetailsModal from "@/components/DetailsModal";
 import React, { useState } from "react";
 
 //DUMY-DATA
@@ -59,6 +60,8 @@ const rows = [
 ];
 
 const CvList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
   const [paginationModel, setPaginationModel] = useState({
     pageSize: 10,
     page: 0,
@@ -118,7 +121,7 @@ const CvList = () => {
   return (
     <section className="flex flex-col justify-center items-center">
       <h1 className="my-8">{`CV's list`}</h1>
-      <div class="flex">
+      <div className="flex">
         <DataGrid
           columns={columns}
           disableRowSelectionOnClick
@@ -127,9 +130,17 @@ const CvList = () => {
           pageSizeOptions={[10, 20, 50]}
           paginationModel={paginationModel}
           rows={rows}
-          onCellDoubleClick={(params, event, details) => console.log()}
+          onCellDoubleClick={(params) => {
+            setModalData(params.row);
+            setIsModalOpen(true);
+          }}
         />
       </div>
+      <DetailsModal
+        data={modalData}
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+      />
     </section>
   );
 };
