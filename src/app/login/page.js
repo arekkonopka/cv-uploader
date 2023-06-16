@@ -94,26 +94,31 @@ const LoginPage = () => {
           </button>
 
           <div className="pt-4">
-        <button className="w-[360px] border border-gray-300 h-11 bg-white text-gray-700 text-base font-semibold py-2.5 rounded-lg">Sign in with Google</button>
-      </div>
+            <button className="w-[360px] border border-gray-300 h-11 bg-white text-gray-700 text-base font-semibold py-2.5 rounded-lg">
+              Sign in with Google
+            </button>
+          </div>
 
-      <div className="flex flex-row items-center justify-center pt-8">
-      <p className="text-sm font-normal text-gray-600">Don’t have an account?</p>
-      <Link className="text-sm font-semibold text-blue-600 pl-1" href="/">Sign up</Link>
+          <div className="flex flex-row items-center justify-center pt-8">
+            <p className="text-sm font-normal text-gray-600">
+              Don’t have an account?
+            </p>
+            <Link className="text-sm font-semibold text-blue-600 pl-1" href="/">
+              Sign up
+            </Link>
+          </div>
+        </div>
       </div>
+      <div>
+        <Image
+          src="/Image.svg"
+          width={0}
+          height={0}
+          style={{ width: '100%', height: '100%' }}
+          alt="Picture of the author"
+        />
       </div>
-    </div>
-    <div>
-    <Image
-      src="/Image.svg"
-      width={0}
-      height={0}
-      style={{ width: '100%', height: '100%' }} 
-      alt="Picture of the author"
-    />
-    </div>
-
-  </main>
+    </main>
   )
 }
 

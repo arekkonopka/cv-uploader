@@ -112,6 +112,44 @@ const newResponse = [
       'Adaptive',
     ],
   },
+  {
+    education: {
+      university: 'CyberTech University',
+      degree: 'Bachelor of Science in Informatics',
+      major: 'Informatics',
+      specialization: 'Data Science and Artificial Intelligence',
+      year: '2017-2021',
+    },
+    experience: {
+      company: 'Robotics Innovators Ltd',
+      years: '2022-2023',
+      position: 'Frontend Developer',
+      responsibilities: [
+        'Developed frontend interfaces for robotic systems',
+        'Collaborated with engineers to implement user-friendly and intuitive designs',
+        'Implemented responsive layouts and optimized UI performance',
+        'Conducted rigorous testing and debugging to ensure seamless user experiences',
+        'Contributed to the continuous improvement of frontend development practices',
+      ],
+    },
+    personal_data: {
+      name: 'Nexus Byteblast',
+      position: 'Front-end developer',
+      languages: ['German', 'English'],
+      github: 'https://github.com/humanoid01',
+    },
+    skills: ['HTML', 'GIT', 'REST API', 'TypeScript', 'SCSS'],
+    soft_skills: [
+      'Impassive',
+      'Methodical',
+      'Precise',
+      'Advanced computational capabilities',
+      'Continuous self-enhancement',
+      'Collaborative',
+      'Detail-oriented',
+      'Adaptive',
+    ],
+  },
 ]
 
 const CvList = () => {
@@ -162,42 +200,43 @@ const CvList = () => {
   }, [])
 
   return (
-    <section className="flex flex-col  items-center h-screen ">
-      <div className="flex mb-8 mt-8 justify-between w-3/4">
+    <section className="flex flex-col  items-center px-[112px]">
+      <div className="flex mb-8 mt-8 justify-between w-full">
         <div>
           <h1 className="text-xl">Welcome to Selleo Dashboard</h1>
           <p className="text-sm mt-2">Lorem ipsum dolor sit ament</p>
         </div>
-        <div className="flex">
+        <div className="flex items-center">
           {isHr() && (
-            <Link href="/upload" className="p-2 rounded-lg bg-violet-600">
+            <Link
+              href="/upload"
+              className="p-2 rounded-lg bg-blue-600 text-white"
+            >
               Upload CV
             </Link>
           )}
         </div>
       </div>
-      <div>
-        <div styles={{ minWidth: "75%" }}>
-          <DataGrid
-            columns={columns}
-            disableRowSelectionOnClick
-            loading={false}
-            onPaginationModelChange={setPaginationModel}
-            pageSizeOptions={[10, 20, 50]}
-            paginationModel={paginationModel}
-            rows={dataNormalizer(newResponse)}
-            onCellDoubleClick={(params) => {
-              setModalData(params.row)
-              setIsModalOpen(true)
-            }}
-          />
-        </div>
-        <DetailsModal
-          data={modalData}
-          isOpen={isModalOpen}
-          setIsOpen={setIsModalOpen}
+      <div className="w-full">
+        <DataGrid
+          columns={columns}
+          disableRowSelectionOnClick
+          loading={false}
+          onPaginationModelChange={setPaginationModel}
+          pageSizeOptions={[10, 20, 50]}
+          paginationModel={paginationModel}
+          rows={dataNormalizer(newResponse)}
+          onCellDoubleClick={(params) => {
+            setModalData(params.row)
+            setIsModalOpen(true)
+          }}
         />
       </div>
+      <DetailsModal
+        data={modalData}
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+      />
     </section>
   )
 }
