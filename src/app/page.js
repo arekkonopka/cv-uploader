@@ -1,134 +1,134 @@
-"use client";
-import { DataGrid } from "@mui/x-data-grid";
-import DetailsModal from "@/components/DetailsModal";
-import React, { useState, useEffect } from "react";
-import { redirect } from "next/navigation";
+'use client'
+import { DataGrid } from '@mui/x-data-grid'
+import DetailsModal from '@/components/DetailsModal'
+import React, { useState, useEffect } from 'react'
+import { redirect } from 'next/navigation'
 
-import { isAuth, isHr } from "@/utils/auth";
-import { dataNormalizer } from "@/utils/dataNormalizer";
-import Link from "next/link";
+import { isAuth, isHr } from '@/utils/auth'
+import { dataNormalizer } from '@/utils/dataNormalizer'
+import Link from 'next/link'
 
 const newResponse = [
   {
     education: {
-      university: "CyberTech University",
-      degree: "Bachelor of Science in Informatics",
-      major: "Informatics",
-      specialization: "Data Science and Artificial Intelligence",
-      year: "2017-2021",
+      university: 'CyberTech University',
+      degree: 'Bachelor of Science in Informatics',
+      major: 'Informatics',
+      specialization: 'Data Science and Artificial Intelligence',
+      year: '2017-2021',
     },
     experience: {
-      company: "Robotics Innovators Ltd",
-      years: "2022-2023",
-      position: "Frontend Developer",
+      company: 'Robotics Innovators Ltd',
+      years: '2022-2023',
+      position: 'Frontend Developer',
       responsibilities: [
-        "Developed frontend interfaces for robotic systems",
-        "Collaborated with engineers to implement user-friendly and intuitive designs",
-        "Implemented responsive layouts and optimized UI performance",
-        "Conducted rigorous testing and debugging to ensure seamless user experiences",
-        "Contributed to the continuous improvement of frontend development practices",
+        'Developed frontend interfaces for robotic systems',
+        'Collaborated with engineers to implement user-friendly and intuitive designs',
+        'Implemented responsive layouts and optimized UI performance',
+        'Conducted rigorous testing and debugging to ensure seamless user experiences',
+        'Contributed to the continuous improvement of frontend development practices',
       ],
     },
     personal_data: {
-      name: "Nexus Byteblast",
-      position: "Front-end developer",
-      languages: ["German", "English"],
-      github: "https://github.com/humanoid01",
+      name: 'Nexus Byteblast',
+      position: 'Front-end developer',
+      languages: ['German', 'English'],
+      github: 'https://github.com/humanoid01',
     },
     skills: [
-      "CSS",
-      "Next.js",
-      "Redux",
-      "HTML",
-      "GIT",
-      "REST API",
-      "TypeScript",
-      "SCSS",
-      "Material UI",
-      "Redux Toolkit",
-      "OOP",
-      "Unit tests",
+      'CSS',
+      'Next.js',
+      'Redux',
+      'HTML',
+      'GIT',
+      'REST API',
+      'TypeScript',
+      'SCSS',
+      'Material UI',
+      'Redux Toolkit',
+      'OOP',
+      'Unit tests',
     ],
     soft_skills: [
-      "Impassive",
-      "Methodical",
-      "Precise",
-      "Advanced computational capabilities",
-      "Continuous self-enhancement",
-      "Collaborative",
-      "Detail-oriented",
-      "Adaptive",
+      'Impassive',
+      'Methodical',
+      'Precise',
+      'Advanced computational capabilities',
+      'Continuous self-enhancement',
+      'Collaborative',
+      'Detail-oriented',
+      'Adaptive',
     ],
   },
   {
     education: {
-      university: "CyberTech University",
-      degree: "Bachelor of Science in Informatics",
-      major: "Informatics",
-      specialization: "Data Science and Artificial Intelligence",
-      year: "2017-2021",
+      university: 'CyberTech University',
+      degree: 'Bachelor of Science in Informatics',
+      major: 'Informatics',
+      specialization: 'Data Science and Artificial Intelligence',
+      year: '2017-2021',
     },
     experience: {
-      company: "Robotics Innovators Ltd",
-      years: "2022-2023",
-      position: "Frontend Developer",
+      company: 'Robotics Innovators Ltd',
+      years: '2022-2023',
+      position: 'Frontend Developer',
       responsibilities: [
-        "Developed frontend interfaces for robotic systems",
-        "Collaborated with engineers to implement user-friendly and intuitive designs",
-        "Implemented responsive layouts and optimized UI performance",
-        "Conducted rigorous testing and debugging to ensure seamless user experiences",
-        "Contributed to the continuous improvement of frontend development practices",
+        'Developed frontend interfaces for robotic systems',
+        'Collaborated with engineers to implement user-friendly and intuitive designs',
+        'Implemented responsive layouts and optimized UI performance',
+        'Conducted rigorous testing and debugging to ensure seamless user experiences',
+        'Contributed to the continuous improvement of frontend development practices',
       ],
     },
     personal_data: {
-      name: "Nexus Byteblast",
-      position: "Front-end developer",
-      languages: ["Polish", "English"],
-      github: "https://github.com/humanoid01",
+      name: 'Nexus Byteblast',
+      position: 'Front-end developer',
+      languages: ['Polish', 'English'],
+      github: 'https://github.com/humanoid01',
     },
     skills: [
-      "JavaScript",
-      "CSS",
-      "React.js",
-      "Redux",
-      "HTML",
-      "GIT",
-      "REST API",
-      "TypeScript",
-      "SCSS",
-      "Material UI",
-      "Redux Toolkit",
-      "OOP",
-      "Unit tests",
+      'JavaScript',
+      'CSS',
+      'React.js',
+      'Redux',
+      'HTML',
+      'GIT',
+      'REST API',
+      'TypeScript',
+      'SCSS',
+      'Material UI',
+      'Redux Toolkit',
+      'OOP',
+      'Unit tests',
     ],
     soft_skills: [
-      "Impassive",
-      "Methodical",
-      "Precise",
-      "Advanced computational capabilities",
-      "Continuous self-enhancement",
-      "Collaborative",
-      "Detail-oriented",
-      "Adaptive",
+      'Impassive',
+      'Methodical',
+      'Precise',
+      'Advanced computational capabilities',
+      'Continuous self-enhancement',
+      'Collaborative',
+      'Detail-oriented',
+      'Adaptive',
     ],
   },
-];
+]
 
 const CvList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalData, setModalData] = useState(null)
   const [paginationModel, setPaginationModel] = useState({
     pageSize: 10,
     page: 0,
-  });
+  })
 
   const columns = [
-    { field: "languages", headerName: "Languages", width: 150 },
-    { field: "age", headerName: "Age", width: 40 },
-    { field: "studies", headerName: "Studies", width: 100 },
+    { field: 'languages', headerName: 'Languages', width: 150 },
+    { field: 'age', headerName: 'Age', width: 40 },
+    { field: 'studies', headerName: 'Studies', width: 100 },
     {
-      field: "github",
-      headerName: "Github",
+      field: 'github',
+      headerName: 'Github',
       width: 100,
       renderCell: (cellValue) => (
         <a
@@ -140,26 +140,26 @@ const CvList = () => {
         </a>
       ),
     },
-    { field: "skills", headerName: "Skills", width: 300 },
+    { field: 'skills', headerName: 'Skills', width: 300 },
     {
-      field: "status",
-      headerName: "Status",
+      field: 'status',
+      headerName: 'Status',
       width: 100,
     },
-    { field: "grade", headerName: "Grade", width: 40 },
+    { field: 'grade', headerName: 'Grade', width: 40 },
     {
-      field: "notes",
-      headerName: "Notes",
+      field: 'notes',
+      headerName: 'Notes',
       width: 50,
-      renderCell: (cellValue) => cellValue?.row?.notes?.length || "-",
+      renderCell: (cellValue) => cellValue?.row?.notes?.length || '-',
     },
-  ];
+  ]
 
   useEffect(() => {
     if (!isAuth()) {
-      return redirect("/login");
+      return redirect('/login')
     }
-  }, []);
+  }, [])
 
   return (
     <section className="flex flex-col  items-center h-screen ">
@@ -187,8 +187,8 @@ const CvList = () => {
             paginationModel={paginationModel}
             rows={dataNormalizer(newResponse)}
             onCellDoubleClick={(params) => {
-              setModalData(params.row);
-              setIsModalOpen(true);
+              setModalData(params.row)
+              setIsModalOpen(true)
             }}
           />
         </div>
@@ -199,7 +199,7 @@ const CvList = () => {
         />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default CvList;
+export default CvList
