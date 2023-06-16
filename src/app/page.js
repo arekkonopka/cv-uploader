@@ -4,7 +4,8 @@ import DetailsModal from '@/components/DetailsModal'
 import React, { useState, useEffect } from 'react'
 import { redirect } from 'next/navigation'
 
-import { isAuth } from '@/utils/auth'
+import { isAuth, isHr } from '@/utils/auth'
+import Link from 'next/link'
 
 const response = [
   {
@@ -133,28 +134,40 @@ const CvList = () => {
   }, [])
 
   return (
-    <section className="flex flex-col justify-center items-center">
-      <h1 className="my-8">{`CV's list`}</h1>
-      <div className="flex">
-        <DataGrid
-          columns={columns}
-          disableRowSelectionOnClick
-          loading={false}
-          onPaginationModelChange={setPaginationModel}
-          pageSizeOptions={[10, 20, 50]}
-          paginationModel={paginationModel}
-          rows={response}
-          onCellDoubleClick={(params) => {
-            setModalData(params.row)
-            setIsModalOpen(true)
-          }}
+    <section className="flex flex-col justify-between items-center h-screen">
+      <div>
+        <h1 className="my-8">{`CV's list`}</h1>
+        <div className="flex">
+          <DataGrid
+            columns={columns}
+            disableRowSelectionOnClick
+            loading={false}
+            onPaginationModelChange={setPaginationModel}
+            pageSizeOptions={[10, 20, 50]}
+            paginationModel={paginationModel}
+            rows={response}
+            onCellDoubleClick={(params) => {
+              setModalData(params.row)
+              setIsModalOpen(true)
+            }}
+          />
+        </div>
+        <DetailsModal
+          data={modalData}
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
         />
       </div>
-      <DetailsModal
-        data={modalData}
-        isOpen={isModalOpen}
-        setIsOpen={setIsModalOpen}
-      />
+      <div className="w-full flex justify-end ">
+        {isHr() && (
+          <Link
+            href="/upload"
+            className="mb-10 mr-10 p-4 rounded-lg bg-green-500"
+          >
+            Upload CV
+          </Link>
+        )}
+      </div>
     </section>
   )
 }
