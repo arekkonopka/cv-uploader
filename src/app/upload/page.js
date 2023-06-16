@@ -1,17 +1,18 @@
 'use client'
 
 import React from 'react'
-import { MyDropzone } from '../../components/Dropzone'
+import { Dropzone } from '../../components/Dropzone'
 
 const Upload = () => {
-  const onDrop =
-    ((acceptedFiles) => {
-      // Do something with the files
-    },
-    [])
+  const onDrop = (acceptedFiles) => {
+    fetch('http://localhost:5000/cv', {
+      method: 'POST',
+      body: acceptedFiles?.[0],
+    })
+  }
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <MyDropzone onDrop={onDrop} />
+      <Dropzone onDrop={onDrop} />
     </div>
   )
 }

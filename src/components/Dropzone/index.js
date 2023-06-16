@@ -3,7 +3,7 @@ import DragNDropIcon from '../../../public/DragNDropIcon.svg'
 
 import Image from 'next/image'
 
-export const MyDropzone = (onDrop) => {
+export const Dropzone = ({ onDrop }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
